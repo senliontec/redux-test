@@ -23,7 +23,7 @@ export default class Count extends Component {
 
     incrementAsync = () => {
         const { value } = this.selectedNumber;
-        this.props.jiaAsync(value * 1);
+        this.props.jiaAsync(value * 1, 500);
     }
 
     render() {
