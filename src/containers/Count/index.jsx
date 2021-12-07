@@ -54,7 +54,7 @@ class Count extends Component {
 
 //使用connect()()创建并暴露一个Count的容器组件
 export default connect(
-    selectedvalue => ({ currentsum: selectedvalue }),
+    state => ({ currentsum: state }),
     {
         jia: createIncrementAction,
         jian: createDecrementAction,
