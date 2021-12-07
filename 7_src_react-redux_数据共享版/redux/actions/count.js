@@ -4,7 +4,7 @@
 
 //import { applyMiddleware } from 'redux'
 //import thunk from 'redux-thunk'
-import { INCREMENT, DECREMENT } from './constant'
+import { INCREMENT, DECREMENT } from '../constant'
 
 
 //同步action，就是指action的值为Object类型的一般对象
