@@ -1,6 +1,14 @@
 import React, { Component } from 'react'
+//引入connect用于连接UI组件与redux
+import { connect } from 'react-redux'
+//引入action
+import {
+    createIncrementAction,
+    createDecrementAction,
+    createIncrementAsyncAction
+} from '../../redux/count_action'
 
-export default class Count extends Component {
+class Count extends Component {
 
     increment = () => {
         const { value } = this.selectedNumber;
@@ -15,7 +23,7 @@ export default class Count extends Component {
     incrementIfOdd = () => {
 
         const { value } = this.selectedNumber;
-        if (this.props.count % 2 !== 0) {
+        if (this.props.currentsum % 2 !== 0) {
             this.props.jia(value * 1)
         }
 
@@ -29,7 +37,7 @@ export default class Count extends Component {
     render() {
         return (
             <div>
-                <h1>当前求和为:{this.props.count}</h1>
+                <h1>当前求和为:{this.props.currentsum}</h1>
                 <select ref={c => this.selectedNumber = c}>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -43,3 +51,13 @@ export default class Count extends Component {
         )
     }
 }
+
+//使用connect()()创建并暴露一个Count的容器组件
+export default connect(
+    selectedvalue => ({ currentsum: selectedvalue }),
+    {
+        jia: createIncrementAction,
+        jian: createDecrementAction,
+        jiaAsync: createIncrementAsyncAction,
+    }
+)(Count)
